@@ -1,6 +1,5 @@
 <?php
-
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the metadata submission sub plugin - http://elearningstudio.co.uk
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,15 +19,15 @@
  *
  * This class provides all the functionality for the new assign module.
  *
- * @package assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @package   assignsubmission_metadata
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
 /**
  * File area for online text submission assignment
  */
-define('assignSUBMISSION_metadata_FILEAREA', 'submissions_metadata');
+define('ASSIGNSUBMISSION_METADATA_FILEAREA', 'submissions_metadata');
 
 /**
  * library class for metadata submission plugin extending submission plugin base class
@@ -123,8 +122,6 @@ class assign_submission_metadata extends assign_submission_plugin {
             $metadatasubmission->artist = $data->artist;
             $metadatasubmission->medium = $data->medium;
             $metadatasubmission->artwork_size = $data->artwork_size;
-
-
             $metadatasubmission->submission = $submission->id;
             $metadatasubmission->assignment = $this->assignment->get_instance()->id;
             return $DB->insert_record('assignsubmission_metadata', $metadatasubmission) > 0;
@@ -147,7 +144,7 @@ class assign_submission_metadata extends assign_submission_plugin {
         $showviewlink = true;
 
         if ($metadatasubmission) {
-            $text = format_text($metadatasubmission->metadata, $metadatasubmission->onlineformat, array('context' => $this->assignment->get_context()));
+            $text = format_text($metadatasubmission->title, $metadatasubmission->onlineformat, array('context' => $this->assignment->get_context()));
             $shorttext = shorten_text($text, 140);
             if ($text != $shorttext) {
                 return $shorttext . get_string('numwords', 'assignsubmission_metadata', count_words($text));
@@ -179,7 +176,7 @@ class assign_submission_metadata extends assign_submission_plugin {
 
             $fs = get_file_storage();
 
-            $fsfiles = $fs->get_area_files($this->assignment->get_context()->id, 'assignsubmission_metadata', assignSUBMISSION_metadata_FILEAREA, $submission->id, "timemodified", false);
+            $fsfiles = $fs->get_area_files($this->assignment->get_context()->id, 'assignsubmission_metadata', ASSIGNSUBMISSION_METADATA_FILEAREA, $submission->id, "timemodified", false);
 
             foreach ($fsfiles as $file) {
                 $files[$file->get_filename()] = $file;
@@ -199,14 +196,18 @@ class assign_submission_metadata extends assign_submission_plugin {
         $result = '';
 
         $metadatasubmission = $this->get_metadata_submission($submission->id);
-
+        $titleheading = html_writer::span(get_string('title', 'assignsubmission_metadata'), 'bold');
+        $title = html_writer::tag('p', $titleheading . ': ' .  $metadatasubmission->title);
+        $artistheading = html_writer::span(get_string('artist', 'assignsubmission_metadata'), 'bold');
+        $artist = html_writer::tag('p', $artistheading . ': ' . $metadatasubmission->artist);
+        $mediumheading = html_writer::span(get_string('medium', 'assignsubmission_metadata'), 'bold');
+        $medium = html_writer::tag('p', $mediumheading . ': ' . $metadatasubmission->medium);
+        $sizeheading = html_writer::span(get_string('size', 'assignsubmission_metadata'), 'bold');
+        $size = html_writer::tag('p', $sizeheading . ': ' . $metadatasubmission->artwork_size);
 
         if ($metadatasubmission) {
-
-            // render for portfolio API
-            $result .= $this->assignment->render_editor_content(assignSUBMISSION_metadata_FILEAREA, $metadatasubmission->submission, $this->get_type(), 'metadata', 'assignsubmission_metadata');
+            $result .= $title . $artist . $medium . $size;
         }
-
         return $result;
     }
 
@@ -273,7 +274,7 @@ class assign_submission_metadata extends assign_submission_plugin {
         // now copy the area files
         $this->assignment->copy_area_files_for_upgrade($oldcontext->id, 'mod_assignment', 'submission', $oldsubmission->id,
                 // New file area
-                $this->assignment->get_context()->id, 'assignsubmission_metadata', assignSUBMISSION_metadata_FILEAREA, $submission->id);
+                $this->assignment->get_context()->id, 'assignsubmission_metadata', ASSIGNSUBMISSION_METADATA_FILEAREA, $submission->id);
         return true;
     }
 
@@ -321,7 +322,7 @@ class assign_submission_metadata extends assign_submission_plugin {
      * @return array - An array of fileareas (keys) and descriptions (values)
      */
     public function get_file_areas() {
-        return array(assignSUBMISSION_metadata_FILEAREA => $this->get_name());
+        return array(ASSIGNSUBMISSION_METADATA_FILEAREA => $this->get_name());
     }
 
 }

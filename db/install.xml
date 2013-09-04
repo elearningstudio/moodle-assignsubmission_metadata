@@ -6,20 +6,17 @@
     <TABLES>
         <TABLE NAME="assignsubmission_metadata" COMMENT="Info about metadata submission">
             <FIELDS>
-                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="gallery"/>
-                <FIELD NAME="gallery" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="submission"/>
-                <FIELD NAME="submission" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="gallery" NEXT="metadata"/>
-                <FIELD NAME="metadata" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="The text for this online text submission." PREVIOUS="submission" NEXT="onlineformat"/>
-                <FIELD NAME="onlineformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="The format for this online text submission." PREVIOUS="metadata" NEXT="title"/>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="submission"/>
+                <FIELD NAME="submission" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="onlineformat"/>
+                <FIELD NAME="onlineformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="The format for this online text submission." PREVIOUS="submission" NEXT="title"/>
                 <FIELD NAME="title" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Title" PREVIOUS="onlineformat" NEXT="artist"/>
                 <FIELD NAME="artist" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Artist" PREVIOUS="title" NEXT="medium"/>
                 <FIELD NAME="medium" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Medium" PREVIOUS="artist" NEXT="artwork_size"/>
                 <FIELD NAME="artwork_size" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Size of artwork" PREVIOUS="medium"/>
             </FIELDS>
             <KEYS>
-                <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for this metadata submission." NEXT="gallery"/>
-                <KEY NAME="gallery" TYPE="foreign" FIELDS="gallery" REFTABLE="assign" REFFIELDS="id" COMMENT="The gallery instance this online text submission relates to." PREVIOUS="primary" NEXT="submission"/>
-                <KEY NAME="submission" TYPE="foreign" FIELDS="submission" REFTABLE="assign_submission" REFFIELDS="id" COMMENT="The submission this online text submission relates to." PREVIOUS="gallery"/>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for this metadata submission." NEXT="submission"/>
+                <KEY NAME="submission" TYPE="foreign" FIELDS="submission" REFTABLE="assign_submission" REFFIELDS="id" COMMENT="The submission this metadata submission relates to." PREVIOUS="primary"/>
             </KEYS>
         </TABLE>
     </TABLES>
