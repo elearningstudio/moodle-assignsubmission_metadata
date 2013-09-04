@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2012062500;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2012062500;        // Requires this Moodle version
+$plugin->version   = 2013090400;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->requires  = 2013040500;        // Requires this Moodle version (2.5)
 $plugin->component = 'assignsubmission_metadata';
 $plugin->maturity  = MATURITY_ALPHA;
 $plugin->release   = '0.9';
