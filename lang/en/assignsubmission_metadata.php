@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the metadata submission sub plugin - http://elearningstudio.co.uk
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,22 +18,22 @@
  * Strings for component 'assignsubmission_metadata', language 'en'
  *
  * @package   assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['allowmetadatasubmissions'] = 'Enabled';
 $string['default'] = 'Enabled by default';
-$string['default_help'] = 'If set, this submission method will be enabled by default for all new galleries.';
+$string['default_help'] = 'If set, this submission method will be enabled by default for all new assignments.';
 $string['enabled'] = 'Metadata';
 $string['enabled_help'] = 'If enabled, students are able to type rich text directly into an editor field for their submission.';
 $string['nosubmission'] = 'Nothing has been submitted for this assignment';
 $string['metadata'] = 'Metadata';
-$string['details'] = 'Tell us more about your artwork:';
+$string['details'] = 'Metadata:';
 $string['title'] = 'Title';
 $string['artist'] = 'Artist';
 $string['medium'] = 'Medium';
-$string['artwork_size'] = 'Size';
+$string['size'] = 'Size';
 $string['metadatafilename'] = 'metadata.html';
 $string['metadatasubmission'] = 'Allow Metadata submission';
 $string['pluginname'] = 'Metadata submissions';
