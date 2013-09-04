@@ -1,5 +1,5 @@
 <?PHP
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the metadata submission sub plugin - http://elearningstudio.co.uk
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  * This file contains the moodle hooks for the submission metadata plugin
  *
  * @package   assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();

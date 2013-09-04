@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the metadata submission sub plugin - http://elearningstudio.co.uk
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 /**
  * This file contains the class for backup of this submission plugin
  *
- * @package assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @package   assignsubmission_metadata
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * This just adds its filearea to the annotations and records the submissiontext and format
  *
  * @package assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_assignsubmission_metadata_subplugin extends backup_subplugin {
@@ -42,16 +42,16 @@ class backup_assignsubmission_metadata_subplugin extends backup_subplugin {
      */
     protected function define_submission_subplugin_structure() {
 
-        // create XML elements
+        // Create XML elements.
         $subplugin = $this->get_subplugin_element(); // virtual optigroup element
         $subpluginwrapper = new backup_nested_element($this->get_recommended_name());
         $subpluginelement = new backup_nested_element('submission_metadata', null, array('metadata', 'onlineformat', 'submission'));
 
-        // connect XML elements into the tree
+        // Connect XML elements into the tree.
         $subplugin->add_child($subpluginwrapper);
         $subpluginwrapper->add_child($subpluginelement);
 
-        // set source to populate the data
+        // Set source to populate the data.
         $subpluginelement->set_source_table('assignsubmission_metadata', array('submission' => backup::VAR_PARENTID));
 
         $subpluginelement->annotate_files('assignsubmission_metadata', 'submissions_metadata', 'submission');

@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the metadata submission sub plugin - http://elearningstudio.co.uk
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 /**
  * This file contains the class for restore of this submission plugin
  *
- * @package assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @package   assignsubmission_metadata
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,7 +26,7 @@
  * restore subplugin class that provides the necessary information needed to restore one assign_submission subplugin.
  *
  * @package assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @copyright 2012 Barry Oosthuizen {@link http://www.elearningstudio.co.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_assignsubmission_metadata_subplugin extends restore_subplugin {
