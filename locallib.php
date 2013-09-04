@@ -196,13 +196,13 @@ class assign_submission_metadata extends assign_submission_plugin {
         $result = '';
 
         $metadatasubmission = $this->get_metadata_submission($submission->id);
-        $titleheading = html_writer::span(get_string('title', 'assignsubmission_metadata'), 'bold');
+        $titleheading = html_writer::tag('span', get_string('title', 'assignsubmission_metadata'), array('class' => 'bold'));
         $title = html_writer::tag('p', $titleheading . ': ' .  $metadatasubmission->title);
-        $artistheading = html_writer::span(get_string('artist', 'assignsubmission_metadata'), 'bold');
+        $artistheading = html_writer::tag('span', get_string('artist', 'assignsubmission_metadata'), array('class' => 'bold'));
         $artist = html_writer::tag('p', $artistheading . ': ' . $metadatasubmission->artist);
-        $mediumheading = html_writer::span(get_string('medium', 'assignsubmission_metadata'), 'bold');
+        $mediumheading = html_writer::tag('span', get_string('medium', 'assignsubmission_metadata'), array('class' => 'bold'));
         $medium = html_writer::tag('p', $mediumheading . ': ' . $metadatasubmission->medium);
-        $sizeheading = html_writer::span(get_string('size', 'assignsubmission_metadata'), 'bold');
+        $sizeheading = html_writer::tag('span', get_string('size', 'assignsubmission_metadata'), array('class' => 'bold'));
         $size = html_writer::tag('p', $sizeheading . ': ' . $metadatasubmission->artwork_size);
 
         if ($metadatasubmission) {
