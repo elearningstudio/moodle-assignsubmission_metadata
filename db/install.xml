@@ -11,8 +11,8 @@
                 <FIELD NAME="onlineformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="The format for this online text submission." PREVIOUS="submission" NEXT="title"/>
                 <FIELD NAME="title" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Title" PREVIOUS="onlineformat" NEXT="artist"/>
                 <FIELD NAME="artist" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Artist" PREVIOUS="title" NEXT="medium"/>
-                <FIELD NAME="medium" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Medium" PREVIOUS="artist" NEXT="artwork_size"/>
-                <FIELD NAME="artwork_size" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Size of artwork" PREVIOUS="medium"/>
+                <FIELD NAME="medium" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Medium" PREVIOUS="artist" NEXT="size"/>
+                <FIELD NAME="size" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Size of artwork" PREVIOUS="medium"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for this metadata submission." NEXT="submission"/>

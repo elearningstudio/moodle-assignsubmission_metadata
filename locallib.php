@@ -32,9 +32,6 @@ define('ASSIGNSUBMISSION_METADATA_FILEAREA', 'submissions_metadata');
 /**
  * library class for metadata submission plugin extending submission plugin base class
  *
- * @package assignsubmission_metadata
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class assign_submission_metadata extends assign_submission_plugin {
 
@@ -81,14 +78,14 @@ class assign_submission_metadata extends assign_submission_plugin {
                 $data->title = $metadatasubmission->title;
                 $data->medium = $metadatasubmission->medium;
                 $data->artist = $metadatasubmission->artist;
-                $data->artwork_size = $metadatasubmission->artwork_size;
+                $data->size = $metadatasubmission->size;
             }
         }
 
         $mform->addElement('text', 'title', get_string('title', 'assignsubmission_metadata'));
         $mform->addElement('text', 'medium', get_string('medium', 'assignsubmission_metadata'));
         $mform->addElement('text', 'artist', get_string('artist', 'assignsubmission_metadata'));
-        $mform->addElement('text', 'artwork_size', get_string('artwork_size', 'assignsubmission_metadata'));
+        $mform->addElement('text', 'size', get_string('size', 'assignsubmission_metadata'));
         return true;
     }
 
@@ -110,7 +107,7 @@ class assign_submission_metadata extends assign_submission_plugin {
             $metadatasubmission->title = $data->title;
             $metadatasubmission->artist = $data->artist;
             $metadatasubmission->medium = $data->medium;
-            $metadatasubmission->artwork_size = $data->artwork_size;
+            $metadatasubmission->size = $data->size;
 
 
             return $DB->update_record('assignsubmission_metadata', $metadatasubmission);
@@ -121,7 +118,7 @@ class assign_submission_metadata extends assign_submission_plugin {
             $metadatasubmission->title = $data->title;
             $metadatasubmission->artist = $data->artist;
             $metadatasubmission->medium = $data->medium;
-            $metadatasubmission->artwork_size = $data->artwork_size;
+            $metadatasubmission->size = $data->size;
             $metadatasubmission->submission = $submission->id;
             $metadatasubmission->assignment = $this->assignment->get_instance()->id;
             return $DB->insert_record('assignsubmission_metadata', $metadatasubmission) > 0;
@@ -202,8 +199,8 @@ class assign_submission_metadata extends assign_submission_plugin {
         $artist = html_writer::tag('p', $artistheading . ': ' . $metadatasubmission->artist);
         $mediumheading = html_writer::tag('span', get_string('medium', 'assignsubmission_metadata'), array('class' => 'bold'));
         $medium = html_writer::tag('p', $mediumheading . ': ' . $metadatasubmission->medium);
-        $sizeheading = html_writer::tag('span', get_string('size', 'assignsubmission_metadata'), array('class' => 'bold'));
-        $size = html_writer::tag('p', $sizeheading . ': ' . $metadatasubmission->artwork_size);
+        $sizeheading = html_writer::tag('span', get_string('size', 'assignsubmission_metadata'), 'bold');
+        $size = html_writer::tag('p', $sizeheading . ': ' . $metadatasubmission->size);
 
         if ($metadatasubmission) {
             $result .= $title . $artist . $medium . $size;
